@@ -1,5 +1,7 @@
 (function(){
 	var deck;
+	var dealerHand = [];
+	var playerHand = [];
 
 	// Constructor function to make cards
 	function Card (value, image, type){
@@ -32,10 +34,22 @@
 		return shuffled
 	}
 
+	function deal(deck, parent, player){
+		var url = deck[0].image;
+		player.push(deck.splice(0, 1)[0]);
+		var $newdiv = $("<div style='background-image: url(\"./img/" + url + "\")' class='card animated slideInUp'></div>")
+		parent.append($newdiv)
+		// $(".blah").append($newdiv)
+	}
+
 	$(".bj-deal").on("click", function(){
 		var bet = Number($(".bj-bet-amount").html());
 		var toShuffle = unshuffledDeck();
 		deck = shuffle(toShuffle);
+		deal(deck, $(".bj-player"), playerHand);
+		deal(deck, $(".bj-dealer"), dealerHand);
+		deal(deck, $(".bj-player"), playerHand);
+		deal(deck, $(".bj-dealer"), dealerHand);
 	})
 
 

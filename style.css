@@ -25,6 +25,7 @@
   background-size: cover;
   background-position: center;
 	height: 540px;
+	position: relative;
 }
 
 
@@ -60,8 +61,6 @@
 	color: black;
 	font-size: 20px
 }
-
-
 
 #bj-chip1{
 	background-image: url("./img/chip1.png");
@@ -145,15 +144,25 @@
 }
 
 .bj-dealer{
-	width: 400px;
-	height: 200px;
-	background-color: white;
+	width: 250px;
+	height: 130px;
+	position: absolute;
+	top: 80px;
+	left: 390px;
 }
 
 .bj-player{
-	width: 400px;
-	height: 200px;
-	background-color: white;
+	width: 250px;
+	height: 130px;
+	position: absolute;
+	bottom: 100px;
+	left: 390px;
+}
+
+.card{
+	background-size: contain;
+	height: 114px;
+	width: 80px;
 }
 
 
