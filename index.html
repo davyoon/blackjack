@@ -3,8 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<script src="libraries/sweetalert.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="libraries/sweetalert.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+	<link rel="stylesheet" href="libraries/animate.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<div class="blackjack">
+		<div class="bj-top"></div>
+		<div class="bj-body">
+			<div class="bj-table">
+				<div class="bj-dealer">HELLO</div>
+				<div class="bj-player"></div>
+			</div>
+				<div class="bj-chipsContainer">
+					<div class="bj-chip hvr-grow" id="bj-chip1">1</div>
+					<div class="bj-chip hvr-grow" id="bj-chip5">5</div>
+					<div class="bj-chip hvr-grow" id="bj-chip25">25</div>
+					<div class="bj-chip hvr-grow" id="bj-chip50">50</div>
+					<div class="bj-chip hvr-grow" id="bj-chip100">100</div>
+					<div class="bj-chip hvr-grow" id="bj-chip500">500</div>
+					<div class="bj-bankroll">
+						<p class="bj-bank-text">BALANCE</p>
+						<p class="bj-bank-amount">2500</p>
+					</div>
+				</div>
+				<div class="bj-option">
+					<div class="bj-bet-phase">
+						<div class="bj-bet-amount">0</div>
+						<button class="btn btn-success-outline bj-deal" >DEAL</button>
+					</div>
+					<div class="bj-hit-phase hide">	
+						<button class="btn btn-primary-outline bj-hit" >HIT</button>
+						<button class="btn btn-danger-outline bj-stand" >STAND</button>
+					</div>
+				</div>
+		</div>	
+		
+		
+		<div class="bj-bot"></div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
 	<script src="script.js"></script>
 </body>
 </html>
