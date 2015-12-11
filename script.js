@@ -40,7 +40,8 @@
 		parent.append($newdiv)
 	}
 
-	$(".bj-deal").on("click", function(){
+	//Bind chips for click event
+	function bindChips(){
 		var bet = Number($(".bj-bet-amount").html());
 		var toShuffle = unshuffledDeck();
 		deck = shuffle(toShuffle);
@@ -48,7 +49,12 @@
 		deal(deck, $(".bj-dealer"), dealerHand);
 		deal(deck, $(".bj-player"), playerHand);
 		deal(deck, $(".bj-dealer"), dealerHand);
-	})
+		$(".bj-bet-phase").addClass("hide");
+		$(".bj-hit-phase").removeClass("hide");
+		$(".bj-chip").unbind("click");
+	}
+
+	$(".bj-deal").on("click", bindChips)
 
 	// Update value of bet and balance while checking for funds/max
 	$(".bj-chip").on("click", function(){
