@@ -16,10 +16,8 @@
 		var value = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, "A", "A", "A", "A"]
 		var img = ["2_of_diamonds.png", "2_of_clubs.png", "2_of_hearts.png", "2_of_spades.png", "3_of_diamonds.png", "3_of_clubs.png", "3_of_hearts.png", "3_of_spades.png", "4_of_diamonds.png", "4_of_clubs.png", "4_of_hearts.png", "4_of_spades.png", "5_of_diamonds.png", "5_of_clubs.png", "5_of_hearts.png", "5_of_spades.png", "6_of_diamonds.png", "6_of_clubs.png", "6_of_hearts.png", "6_of_spades.png", "7_of_diamonds.png", "7_of_clubs.png", "7_of_hearts.png", "7_of_spades.png", "8_of_diamonds.png", "8_of_clubs.png", "8_of_hearts.png", "8_of_spades.png", "9_of_diamonds.png", "9_of_clubs.png", "9_of_hearts.png", "9_of_spades.png", "10_of_diamonds.png", "10_of_clubs.png", "10_of_hearts.png", "10_of_spades.png", "jack_of_diamonds.png", "jack_of_clubs.png", "jack_of_hearts.png", "jack_of_spades.png", "queen_of_diamonds.png", "queen_of_clubs.png", "queen_of_hearts.png", "queen_of_spades.png", "king_of_diamonds.png", "king_of_clubs.png", "king_of_hearts.png", "king_of_spades.png", "ace_of_diamonds.png", "ace_of_clubs.png", "ace_of_hearts.png", "ace_of_spades2.png"]
 		for(var i = 0; i < 52; i ++){
-
 			var t = new Card(value[i], img[i])
 			deck.push(t)
-
 		}
 		return deck
 	}
@@ -34,12 +32,12 @@
 		return shuffled
 	}
 
+	//Deal card to 1 player, remove from deck, add to array, and append to dom
 	function deal(deck, parent, player){
 		var url = deck[0].image;
-		player.push(deck.splice(0, 1)[0]);
+		player.push(deck.shift(0, 1)[0]);
 		var $newdiv = $("<div style='background-image: url(\"./img/" + url + "\")' class='card animated slideInUp'></div>")
 		parent.append($newdiv)
-		// $(".blah").append($newdiv)
 	}
 
 	$(".bj-deal").on("click", function(){
@@ -51,8 +49,6 @@
 		deal(deck, $(".bj-player"), playerHand);
 		deal(deck, $(".bj-dealer"), dealerHand);
 	})
-
-
 
 	// Update value of bet and balance while checking for funds/max
 	$(".bj-chip").on("click", function(){
