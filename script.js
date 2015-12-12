@@ -1,7 +1,7 @@
 (function(){
 	var deck;
-	var dealerHand = [];
-	var playerHand = [];
+	var dealerHand = ["Dealer"];
+	var playerHand = ["Player"];
 
 	// Constructor function to make cards
 	function Card (value, image, type){
@@ -35,24 +35,66 @@
 	//Deal card to 1 player, remove from deck, add to array, and append to dom
 	function deal(deck, parent, player){
 		var url = deck[0].image;
-		player.push(deck.shift(0, 1)[0]);
+		player.push(deck.splice(0, 1)[0]);
 		var $newdiv = $("<div style='background-image: url(\"./img/" + url + "\")' class='card animated slideInUp'></div>")
 		parent.append($newdiv)
 	}
 
 	//Bind chips for click event
 	function bindChips(){
-		var bet = Number($(".bj-bet-amount").html());
-		var toShuffle = unshuffledDeck();
-		deck = shuffle(toShuffle);
-		deal(deck, $(".bj-player"), playerHand);
-		deal(deck, $(".bj-dealer"), dealerHand);
-		deal(deck, $(".bj-player"), playerHand);
-		deal(deck, $(".bj-dealer"), dealerHand);
-		$(".bj-bet-phase").addClass("hide");
-		$(".bj-hit-phase").removeClass("hide");
-		$(".bj-chip").unbind("click");
+		var currentBet = Number($(".bj-bet-amount").html());
+		if(currentBet === 0){
+			swal({ title: "Must place a bet!", text: "Enter a bet between 1 - 2000.", timer: 2000, showConfirmButton: false });
+		}else{
+			var bet = Number($(".bj-bet-amount").html());
+			var toShuffle = unshuffledDeck();
+			deck = shuffle(toShuffle);
+			deal(deck, $(".bj-player"), playerHand);
+			deal(deck, $(".bj-dealer"), dealerHand);
+			deal(deck, $(".bj-player"), playerHand);
+			deal(deck, $(".bj-dealer"), dealerHand);
+			$(".bj-bet-phase").addClass("hide");
+			$(".bj-hit-phase").removeClass("hide");
+			$(".bj-chip").unbind("click");
+			checkForBlackJack(playerHand);
+			checkForBlackJack(dealerHand);
+			console.log(dealerHand)
+			console.log(playerHand)
+		}
 	}
+
+	function checkForAce(player){
+		var aces = [];
+		for(var i = 1; i < player.length; i++){
+			if(player[i].value === "A"){
+				aces.push(i);
+			}
+		}
+		return aces;
+	}
+
+	function checkForBlackJack(player){
+		var aces = checkForAce(player);
+		if(aces.length === 1){
+			player[aces[0]].value = 11;
+		}
+		var total = player[1].value + player[2].value;
+		if(total === 21){
+			swal({ title: "BlackJack!" , text: player[0] + " wins by blackjack.", timer: 2000, showConfirmButton: false });
+		}
+	}
+
+	// function checkForWin(dealer, player){
+	// 	var dealerTotal = 0;
+	// 	var playerTotal = 0; 
+	// 	for(var i = 0; i < dealer.length; i++){
+	// 		dealer[i].value += dealerTotal;
+	// 	}
+	// 	for(var i = 0; i < player.length; i++){
+	// 		player[i].value += playerTotal;
+	// 	}
+	// 	if
+	// }
 
 	$(".bj-deal").on("click", bindChips)
 
