@@ -163,12 +163,22 @@
 	left: 490px;
 }
 
-.card{
+.bj-card{
 	background-size: contain;
 	height: 114px;
 	width: 80px;
 	display: inline-block;
 	margin-left: -63px;
+}
+
+.bj-hiddenCard{
+	background-image: url("./img/backside.png");
+	background-size: contain;
+	height: 114px;
+	width: 80px;
+	display: inline-block;
+	position: absolute;
+	left: -63px;
 }
 
 

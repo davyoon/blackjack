@@ -37,7 +37,7 @@
 	function deal(deck, parent, player){
 		var url = deck[0].image;
 		player.push(deck.splice(0, 1)[0]);
-		var $newdiv = $("<div style='background-image: url(\"./img/" + url + "\")' class='card animated slideInUp'></div>")
+		var $newdiv = $("<div style='background-image: url(\"./img/" + url + "\")' class='bj-card animated slideInUp'></div>")
 		parent.append($newdiv)
 	}
 
@@ -53,6 +53,7 @@
 			deck = shuffle(toShuffle);
 			deal(deck, $(".bj-player"), playerHand);
 			deal(deck, $(".bj-dealer"), dealerHand);
+			$(".bj-dealer").append($("<div class='bj-hiddenCard animated slideInUp'></div>"))
 			deal(deck, $(".bj-player"), playerHand);
 			deal(deck, $(".bj-dealer"), dealerHand);
 			$(".bj-bet-phase").addClass("hide");
@@ -121,6 +122,7 @@
 			if(name === "Player"){
 				$(".bj-bank-amount").html(currentBank + wager * 3);
 			}
+			$(".bj-hiddenCard").remove();
 			setTimeout(gameOver, 2500);
 		}
 	}
@@ -137,6 +139,7 @@
 			}else{
 				swal({ title: "You bust..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
 			}
+			$(".bj-hiddenCard").remove();
 			setTimeout(gameOver, 2500);
 		}
 	}
@@ -165,35 +168,25 @@
 			compare(player, dealer);
 		}else if(dealerTotal > 21){
 			swal({ title: "Dealer busts!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
+			$(".bj-bank-amount").html(currentBank + wager * 2);
+			$(".bj-hiddenCard").remove();
 			setTimeout(gameOver, 2500);
 		}else if(dealerTotal === playerTotal){
 			swal({ title: "It's a tie!" , text: "You get back $" + wager + "!" , timer: 2000, showConfirmButton: false });
 			$(".bj-bank-amount").html(currentBank + wager);
+			$(".bj-hiddenCard").remove();
 			setTimeout(gameOver, 2500);
 		}else if(dealerTotal > playerTotal){
 			swal({ title: "Dealer wins..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
+			$(".bj-hiddenCard").remove();
 			setTimeout(gameOver, 2500);
 		}else if(dealerTotal < playerTotal){
 			swal({ title: "You win!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
 			$(".bj-bank-amount").html(currentBank + wager * 2);
+			$(".bj-hiddenCard").remove();
 			setTimeout(gameOver, 2500);
 		}
 	}
-
-
-
-
-	// function checkForWin(dealer, player){
-	// 	var dealerTotal = 0;
-	// 	var playerTotal = 0; 
-	// 	for(var i = 0; i < dealer.length; i++){
-	// 		dealer[i].value += dealerTotal;
-	// 	}
-	// 	for(var i = 0; i < player.length; i++){
-	// 		player[i].value += playerTotal;
-	// 	}
-	// 	if
-	// }
 
 	$(".bj-deal").on("click", bindDeal)
 
