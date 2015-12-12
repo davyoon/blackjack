@@ -164,9 +164,9 @@
 	}
 
 	function gameOver(){
-		var wager = 0;
-		var dealerHand = ["Dealer"];
-		var playerHand = ["Player"];
+		wager = 0;
+		dealerHand = ["Dealer"];
+		playerHand = ["Player"];
 		$(".bj-chip").on("click", bindChips);
 		$(".bj-bet-amount").html(0);
 		$(".bj-bet-phase").removeClass("hide");
