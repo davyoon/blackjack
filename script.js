@@ -42,7 +42,7 @@
 	}
 
 	//Bind chips for click event
-	function bindChips(){
+	function bindDeal(){
 		var currentBet = Number($(".bj-bet-amount").html());
 		if(currentBet === 0){
 			swal({ title: "Must place a bet!", text: "Enter a bet between 1 - 2000.", timer: 2000, showConfirmButton: false });
@@ -60,6 +60,22 @@
 			$(".bj-chip").unbind("click");
 			checkForBlackJack(playerHand);
 			checkForBlackJack(dealerHand);
+		}
+	}
+
+	function bindChips(){
+		var chip = $(event.target).prop("id").split("p");
+		var value = Number(chip[1])
+		var currentBet = Number($(".bj-bet-amount").html());
+		var currentBank = Number($(".bj-bank-amount").html());
+		
+		if(currentBet + value <= 2000 && currentBank - value >= 0){
+			$(".bj-bet-amount").html(currentBet + value);
+			$(".bj-bank-amount").html(currentBank - value);
+		}else if(currentBank - value < 0){
+			swal({ title: "Insufficient funds!", text: "Try making smaller bets.", timer: 2000, showConfirmButton: false });
+		}else{
+			swal({ title: "Maximum bet exceeded!", text: "Maximum bet is $2000.", timer: 2000, showConfirmButton: false });
 		}
 	}
 
@@ -126,6 +142,7 @@
 			if(name === "Player"){
 				$(".bj-bank-amount").html(currentBank + wager * 3);
 			}
+			setTimeout(gameOver, 2500);
 		}
 	}
 
@@ -133,15 +150,16 @@
 		var name = player[0];
 		var aces = checkForAce(player);
 		var total = aces.getSum(player);
+		console.log(total);
 		var currentBank = Number($(".bj-bank-amount").html());
 		if(total > 21){
-			if(name = "Dealer"){
-				swal({ title: name + "Dealer busts!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
+			if(name === "Dealer"){
+				swal({ title: "Dealer busts!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
 				$(".bj-bank-amount").html(currentBank + wager);
 			}else{
-				swal({ title: name + "You bust..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
+				swal({ title: "You bust..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
 			}
-			gameOver();
+			setTimeout(gameOver, 2500);
 		}
 	}
 
@@ -149,8 +167,12 @@
 		var wager = 0;
 		var dealerHand = ["Dealer"];
 		var playerHand = ["Player"];
-		$(".bj-deal").on("click", bindChips);
-
+		$(".bj-chip").on("click", bindChips);
+		$(".bj-bet-amount").html(0);
+		$(".bj-bet-phase").removeClass("hide");
+		$(".bj-hit-phase").addClass("hide");
+		$(".bj-dealer").empty();
+		$(".bj-player").empty();
 	}
 
 	function dealerMove(){
@@ -176,24 +198,15 @@
 	// 	if
 	// }
 
-	$(".bj-deal").on("click", bindChips)
+	$(".bj-deal").on("click", bindDeal)
 
 	// Update value of bet and balance while checking for funds/max
-	$(".bj-chip").on("click", function(){
-		var chip = $(event.target).prop("id").split("p");
-		var value = Number(chip[1])
-		var currentBet = Number($(".bj-bet-amount").html());
-		var currentBank = Number($(".bj-bank-amount").html());
-		
-		if(currentBet + value <= 2000 && currentBank - value >= 0){
-			$(".bj-bet-amount").html(currentBet + value);
-			$(".bj-bank-amount").html(currentBank - value);
-		}else if(currentBank - value < 0){
-			swal({ title: "Insufficient funds!", text: "Try making smaller bets.", timer: 2000, showConfirmButton: false });
-		}else{
-			swal({ title: "Maximum bet exceeded!", text: "Maximum bet is $2000.", timer: 2000, showConfirmButton: false });
-		}
-	});
+	$(".bj-chip").on("click", bindChips);
+
+	$(".bj-hit").on("click", function(){
+		deal(deck, $(".bj-player"), playerHand);
+		checkForBust(playerHand);
+	})
 
 
 
