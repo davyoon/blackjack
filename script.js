@@ -39,6 +39,7 @@
 		player.push(deck.splice(0, 1)[0]);
 		var $newdiv = $("<div style='background-image: url(\"./img/" + url + "\")' class='bj-card animated slideInUp'></div>")
 		parent.append($newdiv)
+		$("#bj-deal-sound")[0].play();
 	}
 
 	//Bind chips for click event
@@ -73,6 +74,7 @@
 		if(currentBet + value <= 2000 && currentBank - value >= 0){
 			$(".bj-bet-amount").html(currentBet + value);
 			$(".bj-bank-amount").html(currentBank - value);
+			$("#bj-chip-sound")[0].play();
 		}else if(currentBank - value < 0){
 			swal({ title: "Insufficient funds!", text: "Try making smaller bets.", timer: 2000, showConfirmButton: false });
 		}else{
@@ -123,6 +125,7 @@
 				$(".bj-bank-amount").html(currentBank + wager * 3);
 			}
 			$(".bj-hiddenCard").remove();
+			$("#bj-show-sound")[0].play();
 			setTimeout(gameOver, 2500);
 		}
 	}
@@ -140,6 +143,7 @@
 				swal({ title: "You bust..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
 			}
 			$(".bj-hiddenCard").remove();
+			$("#bj-show-sound")[0].play();
 			setTimeout(gameOver, 2500);
 		}
 	}
@@ -170,20 +174,24 @@
 			swal({ title: "Dealer busts!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
 			$(".bj-bank-amount").html(currentBank + wager * 2);
 			$(".bj-hiddenCard").remove();
+			$("#bj-show-sound")[0].play();
 			setTimeout(gameOver, 2500);
 		}else if(dealerTotal === playerTotal){
 			swal({ title: "It's a tie!" , text: "You get back $" + wager + "!" , timer: 2000, showConfirmButton: false });
 			$(".bj-bank-amount").html(currentBank + wager);
 			$(".bj-hiddenCard").remove();
+			$("#bj-show-sound")[0].play();
 			setTimeout(gameOver, 2500);
 		}else if(dealerTotal > playerTotal){
 			swal({ title: "Dealer wins..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
 			$(".bj-hiddenCard").remove();
+			$("#bj-show-sound")[0].play();
 			setTimeout(gameOver, 2500);
 		}else if(dealerTotal < playerTotal){
 			swal({ title: "You win!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
 			$(".bj-bank-amount").html(currentBank + wager * 2);
 			$(".bj-hiddenCard").remove();
+			$("#bj-show-sound")[0].play();
 			setTimeout(gameOver, 2500);
 		}
 	}
