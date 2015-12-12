@@ -149,6 +149,7 @@
 	}
 
 	function gameOver(){
+		var currentBank = Number($(".bj-bank-amount").html());
 		wager = 0;
 		dealerHand = ["Dealer"];
 		playerHand = ["Player"];
@@ -158,6 +159,10 @@
 		$(".bj-hit-phase").addClass("hide");
 		$(".bj-dealer").empty();
 		$(".bj-player").empty();
+		if(currentBank === 0){
+			swal({   title: "You're broke!",   text: "Here's your money back. You broke bastard.",   imageUrl: "./img/nomoney.png" });
+			$(".bj-bank-amount").html(2500);
+		}
 	}
 
 	function compare(player, dealer){

@@ -1,3 +1,6 @@
+
+/*____________BLACKJACK____________*/
+
 .bj-top{
 	background-color: black;
 	width: 100%;
@@ -31,8 +34,6 @@
 	height: 540px;
 	position: relative;
 }
-
-
 
 .bj-chipsContainer{
 	background-color: black;
@@ -183,7 +184,8 @@
 
 
 
-/*HOVER.CSS*/
+/*____________HOVER.CSS____________*/
+
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;
