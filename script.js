@@ -79,27 +79,6 @@
 		}
 	}
 
-	// function checkForAce(player){
-	// 	var aces = [];
-	// 	for(var i = 1; i < player.length; i++){
-	// 		if(player[i].value === "A"){
-	// 			aces.push(i);
-	// 		}
-	// 	}
-	// 	return aces;
-	// }
-
-	// function checkForBlackJack(player){
-	// 	var aces = checkForAce(player);
-	// 	if(aces.length === 1){
-	// 		player[aces[0]].value = 11;
-	// 	}
-	// 	var total = player[1].value + player[2].value;
-	// 	if(total === 21){
-	// 		swal({ title: "BlackJack!" , text: player[0] + " wins by blackjack.", timer: 2000, showConfirmButton: false });
-	// 	}
-	// }
-
 	function checkForAce(player){
 		var aces = [];
 		for(var i = 1; i < player.length; i++){
@@ -150,7 +129,6 @@
 		var name = player[0];
 		var aces = checkForAce(player);
 		var total = aces.getSum(player);
-		console.log(total);
 		var currentBank = Number($(".bj-bank-amount").html());
 		if(total > 21){
 			if(name === "Dealer"){
@@ -175,12 +153,31 @@
 		$(".bj-player").empty();
 	}
 
-	function dealerMove(){
-
-	}
-
 	function compare(player, dealer){
+		var playerName = player[0];
+		var dealerName = dealer[0];
+		var playerTotal = checkForAce(player).getSum(player);
+		var dealerTotal = checkForAce(dealer).getSum(dealer);
+		var currentBank = Number($(".bj-bank-amount").html());
 
+		if(dealerTotal < 17){
+			deal(deck, $(".bj-dealer"), dealerHand);
+			compare(player, dealer);
+		}else if(dealerTotal > 21){
+			swal({ title: "Dealer busts!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
+			setTimeout(gameOver, 2500);
+		}else if(dealerTotal === playerTotal){
+			swal({ title: "It's a tie!" , text: "You get back $" + wager + "!" , timer: 2000, showConfirmButton: false });
+			$(".bj-bank-amount").html(currentBank + wager);
+			setTimeout(gameOver, 2500);
+		}else if(dealerTotal > playerTotal){
+			swal({ title: "Dealer wins..." , text: "You lose $" + wager + "..." , timer: 2000, showConfirmButton: false });
+			setTimeout(gameOver, 2500);
+		}else if(dealerTotal < playerTotal){
+			swal({ title: "You win!" , text: "You win $" + wager + "!" , timer: 2000, showConfirmButton: false });
+			$(".bj-bank-amount").html(currentBank + wager * 2);
+			setTimeout(gameOver, 2500);
+		}
 	}
 
 
@@ -206,6 +203,10 @@
 	$(".bj-hit").on("click", function(){
 		deal(deck, $(".bj-player"), playerHand);
 		checkForBust(playerHand);
+	});
+
+	$(".bj-stand").on("click", function(){
+		compare(playerHand, dealerHand);
 	})
 
 
