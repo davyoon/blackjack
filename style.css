@@ -1,3 +1,72 @@
+body{
+	background-color: black;
+}
+/*____________LANDING____________*/
+
+.landing-page{
+	height: 760px;
+	background-image: url("./img/retina_wood.png");
+}
+.landing-title{
+	height: 60px;
+	text-align: center;
+	letter-spacing: 15px;
+	margin-top: 100px
+
+}
+
+
+.landing-body{
+	margin-top: 100px;
+}
+
+.landing-black{
+	height: 300px;
+	background-image: url("./img/blackjack.png");
+	background-size: cover;
+	background-position: center;
+	box-shadow: 10px 10px 5px grey;
+	padding: 0px;
+}
+
+.landing-toe{
+	height: 300px;
+	background-image: url("./img/tictactoe.png");
+	background-size: cover;
+	background-position: center;
+	box-shadow: 10px 10px 5px grey;
+	padding: 0px;
+}
+
+.landing-bj-hover{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+}
+
+.landing-toe-hover{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+}
+
+.landing-bj-name{
+	font-size: 25px;
+	color: white;
+	text-align: center;
+	letter-spacing: 12px;
+	padding-top: 90px;
+}
+
+.landing-toe-name{
+	font-size: 24px;
+	color: white;
+	text-align: center;
+	letter-spacing: 9px;
+	padding-top: 90px;
+}
+
+
 
 /*____________BLACKJACK____________*/
 
@@ -181,6 +250,72 @@
 	position: absolute;
 	left: -63px;
 }
+
+
+/*____________TICTACTOE____________*/
+
+.tictactoe{
+	background-color: white;
+}
+
+.toe-top{
+	background-color: #F5E050;
+	width: 100%;
+	height: 60px;
+	text-align: center;
+	font-size: 30px;
+	color: white;
+	letter-spacing: 15px;
+}
+
+.toe-body{
+	width: 950px;
+	height: 640px;
+	margin: auto;
+	background-color: white;
+}
+
+.toe-bot{
+	background-color: #1E6A9F;
+	width: 100%;
+	height: 60px;
+}
+
+.toe-welcome{
+	background-image: url("img/minionsBg.jpg");
+	background-repeat: no-repeat;
+	background-size: auto;
+	background-position: center;
+
+}
+
+.start {
+  font-family: Arial;
+  color: #095573;
+  font-size: 50px;
+  padding: 10px 20px 10px 20px;
+  border: solid #095573 5px;
+  text-decoration: none;
+  margin-left: 50px;
+  margin-top: 400px;
+  background-color: #FCE94D;
+	border-radius: 30%;
+}
+
+.start:hover {
+  background: #57d1f0;
+}
+
+.nameField{
+	border: 3px solid #095573;
+	width: 220px;
+	padding: 10px;
+	margin-top: 50px;
+	margin-left: 50px;
+	position: absolute;
+}
+
+
 
 
 
