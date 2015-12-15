@@ -354,3 +354,9 @@ $(".landing-toe").on("click", function(){
 		$(".landing-page").addClass("hide");
 		$(".tictactoe").removeClass("hide");
 })
+
+$(".home").on("click", function(){
+	$(".tictactoe").addClass("hide");
+	$(".blackjack").addClass("hide");
+	$(".landing-page").removeClass("hide");
+})
