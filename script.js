@@ -231,16 +231,6 @@
 // ___________TICTACTOE__________
 
 (function(){
-	$(".start").on("click", function(){
-		var name1 = $(".name1Input").val();
-		var name2 = $(".name2Input").val();
-		$(".name1").text(name1);
-		$(".name2").text(name2);
-		$(".outside").toggle();
-		$(".nameField").toggle();
-		$(".start").addClass("hide");
-		setGame();
-	});
 
 	//set defaults for game
 	var turnCounter = 0;
@@ -248,8 +238,19 @@
 	var xArray = [null, null, null, null, null, null, null, null, null];
 	var gameOver = false;
 
+	$(".start").on("click", function(){
+		var name1 = $(".name1Input").val();
+		var name2 = $(".name2Input").val();
+		$(".name1").text(name1);
+		$(".name2").text(name2);
+		$(".toe-welcome").addClass("hide");
+		$(".toe-main").removeClass("hide");
+		setGame();
+	});
+
+
 	//create boxes for game and run startGame function
-	var setGame = function(){
+	function setGame(){
 		for(var i = 0; i < 9; i++){
 				$div = $("<div class='box'>").attr("id",[i]);
 				var $container = $(".container");
@@ -259,7 +260,7 @@
 		}
 
 	//check if a player won
-	var checkWinner = function(){
+	function checkWinner(){
 		var score1 = parseInt($("#score1").text());
 		var score2 = parseInt($("#score2").text());
 		var $playButton = $(".playButton");
@@ -267,45 +268,36 @@
 			|| oArray[2] === "O" && oArray[2] === oArray[5] && oArray[5] === oArray[8]  ||  oArray[1] === "O" && oArray[1] === oArray[4] && oArray[4] === oArray[7]	||  oArray[0] === "O" && oArray[0] === oArray[3] && oArray[3] === oArray[6]
 			|| oArray[0] === "O" && oArray[0] === oArray[4] && oArray[4] === oArray[8]	||	oArray[2] === "O" && oArray[2] === oArray[4] && oArray[4] === oArray[6]){
 			gameOver = true;
-			$(".congrats").toggle();
 			$("#score1").text(score1 += 1);
-			//change picture for win message play button
-			$(".congrats2").css("background-image", "url('img/congratulations.png')");
-			$playButton.toggle();
+			$playButton.removeClass("hide");
+			swal({   title: "O Wins!",   text: "Score is " + score1 + " - " + score2 + ".",   imageUrl: "./img/congrats.jpg" });
 			playAgain();
 		}else if(xArray[0] === "X" && xArray[0] === xArray[1] && xArray[1] === xArray[2]  ||  xArray[3] === "X" && xArray[3] === xArray[4] && xArray[4] === xArray[5]  ||  xArray[6] === "X" && xArray[6] === xArray[7] && xArray[7] === xArray[8]
 			|| xArray[2] === "X" && xArray[2] === xArray[5] && xArray[5] === xArray[8]  ||  xArray[1] === "X" && xArray[1] === xArray[4] && xArray[4] === xArray[7]	||  xArray[0] === "X" && xArray[0] === xArray[3] && xArray[3] === xArray[6]
 			|| xArray[0] === "X" && xArray[0] === xArray[4] && xArray[4] === xArray[8]	||	xArray[2] === "X" && xArray[2] === xArray[4] && xArray[4] === xArray[6]){
 			gameOver = true;
-			$(".congrats").toggle();
 			$("#score2").text(score2 += 1);
-			//change picture for win message play button
-			$(".congrats2").css("background-image", "url('img/congratulations.png')");
-			$playButton.toggle();
+			$playButton.removeClass("hide");
+			swal({   title: "X Wins!",   text: "Score is " + score1 + " - " + score2 + ".",   imageUrl: "./img/congrats.jpg" });
 			playAgain();
 		}
 		else if(turnCounter === 9){
 			gameOver = true;
-			$(".congrats").toggle();
-			//change picture for tie message and hide play button
-			$(".congrats2").css("background-image", "url('img/tieMessage.png')")
-			$playButton.toggle();
+			$playButton.removeClass("hide");
+			swal({   title: "It's a Tie!",   text: "Score is still " + score1 + " - " + score2 + ".",   imageUrl: "./img/congrats.jpg" });
 			playAgain();
 		}
 	}
 
 	//reset all default values, remove all divs from the dom and re-append
-	var playAgain = function(){
+	function playAgain(){
 		var $playButton = $(".playButton");
 		$playButton.on("click", function(){
 			turnCounter = 0;
 			oArray = [null, null, null, null, null, null, null, null, null];
 			xArray = [null, null, null, null, null, null, null, null, null];
 			gameOver = false;
-			console.log("clicked");
-			$(".box").removeClass("opic").removeClass("xpic").removeClass("animated").removeClass("flip");
-			$playButton.toggle();
-			$playButton.unbind("click")
+			$playButton.addClass("hide");
 			$(".congrats").toggle();
 			$(".box").remove();
 			setGame();
@@ -313,10 +305,9 @@
 	}
 
 	//bind all divs and alternate turns
-	var startGame = function() {
+	function startGame() {
 		var $spot = $(".box");
-
-		var proceed = function(event){
+		function proceed(event){
 			//unbind all divs if gameover
 			if(gameOver === true){
 				$spot.unbind("click");

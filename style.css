@@ -255,7 +255,7 @@ body{
 /*____________TICTACTOE____________*/
 
 .tictactoe{
-	background-color: white;
+	background-color: #F5E050;
 }
 
 .toe-top{
@@ -273,6 +273,7 @@ body{
 	height: 640px;
 	margin: auto;
 	background-color: white;
+	border-radius: 3%
 }
 
 .toe-bot{
@@ -315,6 +316,83 @@ body{
 	position: absolute;
 }
 
+.name1Input{
+	margin-bottom: 20px;
+}
+
+.toe-main{
+	background-color: #1E6A9F;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border-radius: 3%;
+}
+
+.box {
+	width: 160px;
+	height: 160px;
+	display: inline-block;
+	margin: 10px;
+	background-image: url("img/minionO.jpg");
+	background-size: 100%;
+}
+
+.container{
+	height: 100%;
+	width: 600px;
+	padding-left: 30px;
+}
+
+.playButton{
+	height: 80px;
+	width: 400px;
+	background-image: url("img/playAgain.jpg");
+	position: absolute;
+	bottom: 8px;
+	left: 280px;
+	font-size: 20px;
+	background-size: 100%;
+}	
+
+.scoreBoard1{
+	text-align: center;
+	width: 150px;
+	position: absolute;
+	top: 80px;
+	left: 15px;
+}
+
+.scoreBoard2{
+	text-align: center;
+	width: 150px;
+	position: absolute;
+	top: 80px;
+	right: 10px;
+}
+
+.name1{
+	color: orange;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+.name2{
+	color: orange;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+.opic{
+	background-image: url("img/bananaO.png");
+	background-size: 100%;
+	border-radius: 50%;
+}
+
+.xpic{
+	background-image: url("img/bluegX.jpg");
+	background-size: 100%;
+	border-radius: 50%;
+}
 
 
 
