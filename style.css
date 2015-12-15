@@ -286,8 +286,17 @@ body{
 	background-image: url("img/minionsBg.jpg");
 	background-repeat: no-repeat;
 	background-size: auto;
-	background-position: center;
+	background-position: bottom;
+}
 
+.header{
+	width: 320px;
+	height: 130px;
+	position: absolute;
+	background-image: url("img/minionText.jpg");
+	top: 90px;
+	left: 600px;
+	background-size: 100%;
 }
 
 .start {
@@ -298,7 +307,7 @@ body{
   border: solid #095573 5px;
   text-decoration: none;
   margin-left: 50px;
-  margin-top: 400px;
+  margin-top: 450px;
   background-color: #FCE94D;
 	border-radius: 30%;
 }
@@ -359,7 +368,7 @@ body{
 	width: 150px;
 	position: absolute;
 	top: 80px;
-	left: 15px;
+	left: 30px;
 }
 
 .scoreBoard2{
@@ -367,7 +376,7 @@ body{
 	width: 150px;
 	position: absolute;
 	top: 80px;
-	right: 10px;
+	right: 30px;
 }
 
 .name1{
