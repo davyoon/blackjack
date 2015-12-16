@@ -12,3 +12,18 @@ BlackJack
 *Compare values and alert who won
 
 ##Wireframe
+![My logo](./img/wireframe.jpg)
+
+##BlackJack Pseudocode
+
+##TicTacToe Pseudocode
+
+
+##Technologies
+*HTML/CSS
+*Javascript
+*Bootstrap
+*Sweetalert
+*Animate.css
+
+##Features
