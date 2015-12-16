@@ -15,9 +15,10 @@ BlackJack
 ![My logo](./img/wireframe.jpg)
 
 ##BlackJack Pseudocode
+![My logo](./img/pseudobj.jpg)
 
 ##TicTacToe Pseudocode
-
+![My logo](./img/pseudottt.jpg)
 
 ##Technologies
 *HTML/CSS
