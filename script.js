@@ -9,10 +9,9 @@
 	var playerHand = ["Player"];
 
 	// Constructor function to make cards
-	function Card (value, image, type){
+	function Card (value, image){
 		this.value = value,
 		this.image = image,
-		this.type = type
 	}
 
 	// Make deck of cards in order
