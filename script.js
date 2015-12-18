@@ -11,7 +11,7 @@
 	// Constructor function to make cards
 	function Card (value, image){
 		this.value = value,
-		this.image = image,
+		this.image = image
 	}
 
 	// Make deck of cards in order
