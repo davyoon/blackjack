@@ -12,6 +12,11 @@ BlackJack
 * Players can stand or hit
 * Compare values and alert who won
 
+Tic Tac Toe
+* Get player names
+* Keep track of score
+* Option to play again after game is over
+
 ##Wireframe
 ![My logo](./img/wireframe.jpg)
 
@@ -28,5 +33,5 @@ BlackJack
 * Sweetalert
 * Animate.css
 
-##Features
+
 
