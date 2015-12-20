@@ -17,7 +17,7 @@
 	// Make deck of cards in order
 	function unshuffledDeck(){
 		var deck = []
-		var value = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, "A", "A", "A", "A"]
+		var value = [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11]
 		var img = ["2_of_diamonds.png", "2_of_clubs.png", "2_of_hearts.png", "2_of_spades.png", "3_of_diamonds.png", "3_of_clubs.png", "3_of_hearts.png", "3_of_spades.png", "4_of_diamonds.png", "4_of_clubs.png", "4_of_hearts.png", "4_of_spades.png", "5_of_diamonds.png", "5_of_clubs.png", "5_of_hearts.png", "5_of_spades.png", "6_of_diamonds.png", "6_of_clubs.png", "6_of_hearts.png", "6_of_spades.png", "7_of_diamonds.png", "7_of_clubs.png", "7_of_hearts.png", "7_of_spades.png", "8_of_diamonds.png", "8_of_clubs.png", "8_of_hearts.png", "8_of_spades.png", "9_of_diamonds.png", "9_of_clubs.png", "9_of_hearts.png", "9_of_spades.png", "10_of_diamonds.png", "10_of_clubs.png", "10_of_hearts.png", "10_of_spades.png", "jack_of_diamonds.png", "jack_of_clubs.png", "jack_of_hearts.png", "jack_of_spades.png", "queen_of_diamonds.png", "queen_of_clubs.png", "queen_of_hearts.png", "queen_of_spades.png", "king_of_diamonds.png", "king_of_clubs.png", "king_of_hearts.png", "king_of_spades.png", "ace_of_diamonds.png", "ace_of_clubs.png", "ace_of_hearts.png", "ace_of_spades2.png"]
 		for(var i = 0; i < 52; i ++){
 			var t = new Card(value[i], img[i])
@@ -86,31 +86,20 @@
 	}
 
 	function checkForAce(player){
-		var aces = [];
-		for(var i = 1; i < player.length; i++){
-			if(player[i].value === "A"){
-				aces.push(i);
-			}
-		}
+	
 		return {
-			aces: aces,
+			aces: [],
 			sum: 0,
 			getSum: function(player){
 				for(var i = 1; i < player.length; i++){
-					if(player[i].value !== "A"){
-						this.sum += player[i].value;
+					if(player[i].value === 11){
+						this.aces.push(i);
 					}
+					this.sum += player[i].value;
 				}
-				if(aces.length){
-					for(var i = 0; i < aces.length; i++){
-						if(this.sum + 11 <= 21){
-							player[aces[i]].value = 11;
-							this.sum += 11;
-						}else{
-							player[aces[i]].value = 1;
-							this.sum += 1;
-						}
-					}
+				while(this.sum > 21 && this.aces.length){
+					this.sum -= 10;
+					this.aces.shift();
 				}
 				return this.sum;
 			}
