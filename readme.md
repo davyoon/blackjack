@@ -29,6 +29,7 @@ Tic Tac Toe
 ##Technologies
 * HTML/CSS
 * JavaScript
+* jQuery
 * Bootstrap
 * Sweetalert
 * Animate.css
