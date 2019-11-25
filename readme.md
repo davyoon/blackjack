@@ -1,11 +1,18 @@
-#TIC TAC 21 
-
+## Description
 TIC TAC 21 is a gaming app where you can choose between two games.  One is the classic game of blackjack and the other is a minions themed tic tac toe.
 
-##Objective
-Create a web app with tic tac toe and blackjack.
+![Demo](./img/blackgif.gif)
+![Demo](./img/ticgif.gif)
 
-##Minimum Viable Product
+## Technologies
+* HTML/CSS
+* JavaScript
+* jQuery
+* Bootstrap
+* Sweetalert
+* Animate.css
+
+## Minimum Viable Product
 BlackJack
 * Keep track of bankroll
 * Players can make a bet
@@ -17,22 +24,17 @@ Tic Tac Toe
 * Keep track of score
 * Option to play again after game is over
 
-##Wireframe
+## Wireframe
 ![My logo](./img/wireframe.jpg)
 
-##BlackJack Pseudocode
+## BlackJack Pseudocode
 ![My logo](./img/pseudobj.jpg)
 
-##TicTacToe Pseudocode
+## TicTacToe Pseudocode
 ![My logo](./img/pseudottt.jpg)
 
-##Technologies
-* HTML/CSS
-* JavaScript
-* jQuery
-* Bootstrap
-* Sweetalert
-* Animate.css
-
+## Deployment
+* <a href="https://davyoon.github.io/tictac21/">Live Link</a>
+* <a href="https://github.com/davyoon/tictac21">Github</a>
 
 
